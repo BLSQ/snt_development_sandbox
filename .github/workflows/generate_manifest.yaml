@@ -1,0 +1,90 @@
+name: Generate Release Manifest
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch: # Allows manual triggering for testing
+
+jobs:
+  generate-manifest:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name || github.ref }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Generate Manifest Script
+        run: |
+          cat << 'EOF' > generate_manifest.py
+          import os
+          import json
+          import hashlib
+          import glob
+
+          def hash_file(filepath):
+              hasher = hashlib.sha256()
+              with open(filepath, 'rb') as f:
+                  while chunk := f.read(8192):
+                      hasher.update(chunk)
+              return hasher.hexdigest()
+
+          def main():
+              manifest = {
+                  "version": os.environ.get('GITHUB_REF_NAME', 'unknown'),
+                  "files": {}
+              }
+              
+              # Directories/patterns to track (excluding data, config, etc.)
+              patterns = [
+                  'pipelines/**/code/*.ipynb',
+                  'pipelines/**/reporting/*.ipynb',
+                  'pipelines/**/utils/*.r',
+                  'code/**/*.r',
+                  '*/pipeline.py',
+              ]
+              
+              tracked_files = []
+              for pattern in patterns:
+                  tracked_files.extend(glob.glob(pattern, recursive=True))
+                  
+              # Deduplicate
+              tracked_files = list(set(tracked_files))
+              
+              for fpath in tracked_files:
+                  # ensure standard path separators
+                  standard_path = fpath.replace('\\', '/')
+                  manifest["files"][standard_path] = hash_file(fpath)
+                  
+              with open('release_manifest.json', 'w') as f:
+                  json.dump(manifest, f, indent=2)
+                  
+              print(f"Generated manifest with {len(manifest['files'])} files.")
+
+          if __name__ == '__main__':
+              main()
+          EOF
+
+      - name: Run Script
+        run: python generate_manifest.py
+        
+      - name: Upload Manifest to Release
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v1
+        with:
+          files: release_manifest.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Upload Artifact (for workflow_dispatch)
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-manifest
+          path: release_manifest.json
