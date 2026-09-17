@@ -1,3 +1,5 @@
+# release test marker: v0.0.2-test
+
 # ================================================
 # Title: Utility Functions for SNT Process
 # Description: This script contains utility functions used for SNT computation workflow.

@@ -1,3 +1,5 @@
+# release test marker: v0.0.2-test
+
 # Store code to be sourced in the notebook in this same directory, so that the main notebook
 # only shows the code relevant to the analysis, and not the boring routine setup, import and export.
 # Each piece of code is wrapped in a function to keep the notebook clean.

@@ -1,3 +1,5 @@
+# release test marker: v0.0.2-test
+
 from pathlib import Path
 
 import geopandas as gpd
