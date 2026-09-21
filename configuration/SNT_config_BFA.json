@@ -1,0 +1,66 @@
+{
+	"SNT_CONFIG": {
+		"COUNTRY_CODE": "BFA",	
+		"COUNTRY_NAME": "BURKINA FASO",	
+		"DHIS2_ADMINISTRATION_1": "level_2_name",
+		"DHIS2_ADMINISTRATION_2": "level_4_name",
+		"ANALYTICS_ORG_UNITS_LEVEL" : 6,		
+		"REPORTING_RATE_PRODUCT_UID" : ["Ae9s1MsUEYq", "R5UJwkTo2HV"]
+	},
+	"SNT_DATASET_IDENTIFIERS" : {
+		"DHIS2_DATASET_EXTRACTS": "snt-dhis2-extracts",
+		"DHIS2_DATASET_FORMATTED": "snt-dhis2-formatted",	
+		"DHIS2_POPULATION_TRANSFORMATION": "snt-dhis2-pop-transformation",
+		"DHIS2_REPORTING_RATE": "snt-dhis2-reporting-rate", 
+		"DHIS2_OUTLIERS_IMPUTATION": "snt-dhis2-outliers-imputation",
+		"DHIS2_INCIDENCE": "snt-dhis2-incidence",
+		"DHS_INDICATORS": "snt-dhs-indicators",
+		"WORLDPOP_DATASET_EXTRACT": "snt-worldpop-extract",
+		"SNT_HEALTHCARE_ACCESS": "snt-healthcare-access",
+		"ERA5_DATASET_CLIMATE": "snt-era5-climate",		
+        "SNT_SEASONALITY_RAINFALL": "snt-seasonality-rainfall",
+        "SNT_SEASONALITY_CASES": "snt-seasonality-cases",
+		"DHIS2_QUALITY_OF_CARE": "snt-dhis2-quality-of-care",
+		"SNT_MAP_EXTRACTS": "snt-map-extracts",
+		"SNT_RESULTS": "snt-results"
+	},
+	"DHIS2_DATA_DEFINITIONS": {
+		"POPULATION_INDICATOR_DEFINITIONS": {
+			"POPULATION": {"ids": ["GnuL22VzpPd", "SJKrcCexYJm", "dgRfLQYXTC5", "vxeTzZLjFsO", "xXjlTgt5XCW"], "type" : "dataElement"},
+            "POP_UNDER_5": {"ids": [], "type": "dataElement"},
+            "POP_PREGNANT_WOMEN": {"ids": [], "type": "dataElement"},
+            "POP_0_1_Y": {"ids": [], "type": "dataElement"},
+            "POP_1_2_Y": {"ids": [], "type": "dataElement"},
+            "POP_5_10_Y": {"ids": [], "type": "dataElement"},
+            "POP_5_36_M": {"ids": [], "type": "dataElement"},
+            "POP_50_PLUS": {"ids": [], "type": "dataElement"}	
+		},
+		"DHIS2_INDICATOR_DEFINITIONS": {
+			"SUSP": ["qkhx1DbWUFV", "OhPA8Hq1KYf","nfRYeVm4dCt","YwRi5giAozg"],
+			"TEST": ["qlwFHwrxnH9","GW43RcB9FbB", "MMekmRHBcSD","yHBQQEsP1Zi", "nhSrxeBE209","BIGNssi5RZS"],
+			"CONF": ["gPlZieTaMLy","f2fnat9bu09","OG8BQGl6Sm1"],
+			"PRES": ["l4ckoEMDjsG", "uaIgq7rkTBJ","CuC2TRA7OqL","bfFuyDjy7Tc"],
+			"PRESSEV": [],
+			"MALTREAT": ["zwt1RsszBe2", "iaUXQh7HGOp","wBPQDiqFHCN","MzKdVsKINA7"],
+			"MALADM": ["LfwPBU33gxe", "YGI8s8uUfux","pdvpFvz3iGD","hPJgypEErD6"],
+			"MALDTH": ["Rhoc3VZXzh0", "Rzl70MRimfO","YS5G7zpDSAy","iQkLfVVchzb"],
+			"CASRECU" : [],
+			"CPN1" : []
+		},
+		"DHIS2_REPORTING_RATES" : {
+			"REPORTING_DATASETS": [
+				{
+					"DATASET" : "",				
+					"METRICS": {
+						"ACTUAL_REPORTS": "float",
+						"EXPECTED_REPORTS": "float"
+					}
+				}
+			],
+			"REPORTING_INDICATORS" : {
+				"ACTUAL_REPORTS" : "Ae9s1MsUEYq",
+				"EXPECTED_REPORTS": "R5UJwkTo2HV"
+			}
+		}
+	}
+}
