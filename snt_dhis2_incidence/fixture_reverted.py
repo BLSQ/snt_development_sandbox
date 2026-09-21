@@ -1,1 +1,1 @@
-# fixture: helper module, revision A
+# fixture: helper module, revision B
