@@ -1,1 +1,1 @@
-# fixture: changing file, revision B
+# fixture: changing file, revision C
